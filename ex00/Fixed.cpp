@@ -6,15 +6,17 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:45 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/24 16:07:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/24 17:06:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+const int Fixed::_fractBits(8);
+
 Fixed::Fixed() : _fixedPoint(0)
 {
-	std::cout << "Fixed constructor called" << std::endl;
+	std::cout << "Fixed default constructor called" << std::endl;
 	return ;
 }
 
