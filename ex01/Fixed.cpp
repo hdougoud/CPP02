@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:45 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/24 17:21:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:07:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 const int Fixed::_fractBits(8);
 
-Fixed::Fixed() : _fixedPoint(0)
+Fixed::Fixed() : _raw(0)
 {
 	std::cout << "Fixed default constructor called" << std::endl;
 	return ;
 }
 
-Fixed::Fixed(const Fixed &copy) : _fixedPoint(copy._fixedPoint)
+Fixed::Fixed(const Fixed &copy) : _raw(copy._raw)
 {
 	std::cout << "Fixed copy constructor called" << std::endl;
 	return ;
@@ -30,21 +30,22 @@ Fixed	&Fixed::operator=(const Fixed &src)
 {
 	if (this != &src)
 	{
-		this->_fixedPoint = src._fixedPoint;
+		this->_raw = src._raw;
 	}
 	std::cout << "Fixed assignement operator called" << std::endl;
 	return (*this);
 }
 
-Fixed::Fixed(const int fractional) : _fixedPoint(fractional)
+Fixed::Fixed(const int nb) : _raw(nb * std::pow(2, this->_fractBits))
 {
 	std::cout << "Fixed int constructor called" << std::endl;
 	return ;
 }
 
-Fixed::Fixed(const float fractional) : _fixedPoint(fractional)
+Fixed::Fixed(const float nb) : _raw(roundf(nb * std::pow(2, this->_fractBits)))
 {
 	std::cout << "Fixed float constructor called" << std::endl;
+	return ;
 }
 
 Fixed::~Fixed()
@@ -56,10 +57,25 @@ Fixed::~Fixed()
 int	Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->_fixedPoint);
+	return (this->_raw);
 }
 
-void Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(int const raw)
 {
-	this->_fixedPoint = raw;
+	this->_raw = _raw;
+}
+
+int	Fixed::toInt(void) const
+{
+	return (this->_raw / (std::pow(2, this->_fractBits)));
+}
+
+float	Fixed::toFloat(void) const
+{
+	return (this->_raw / (std::pow(2, this->_fractBits)));
+}
+
+std::ostream	&operator<<(std::ostream &os, const Fixed &src)
+{
+	return (os);
 }
