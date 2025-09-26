@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:43 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/25 20:53:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:50:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ class Fixed
 	public:
 		Fixed();
 		Fixed(const Fixed &copy);
-		Fixed &operator=(const Fixed &src);
 		Fixed(const int nb);
 		Fixed(const float nb);
+		Fixed &operator=(const Fixed &src);
 		~Fixed();
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

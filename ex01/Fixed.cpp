@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:45 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/25 21:07:48 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:51:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ Fixed::Fixed(const Fixed &copy) : _raw(copy._raw)
 	return ;
 }
 
+Fixed::Fixed(const int nb) : _raw(nb * (1 << this->_fractBits))
+{
+	std::cout << "Fixed int constructor called" << std::endl;
+	return ;
+}
+
+Fixed::Fixed(const float nb) : _raw(roundf(nb * (1 << this->_fractBits)))
+{
+	std::cout << "Fixed float constructor called" << std::endl;
+	return ;
+}
+
 Fixed	&Fixed::operator=(const Fixed &src)
 {
 	if (this != &src)
@@ -34,18 +46,6 @@ Fixed	&Fixed::operator=(const Fixed &src)
 	}
 	std::cout << "Fixed assignement operator called" << std::endl;
 	return (*this);
-}
-
-Fixed::Fixed(const int nb) : _raw(nb * std::pow(2, this->_fractBits))
-{
-	std::cout << "Fixed int constructor called" << std::endl;
-	return ;
-}
-
-Fixed::Fixed(const float nb) : _raw(roundf(nb * std::pow(2, this->_fractBits)))
-{
-	std::cout << "Fixed float constructor called" << std::endl;
-	return ;
 }
 
 Fixed::~Fixed()
@@ -67,15 +67,16 @@ void	Fixed::setRawBits(int const raw)
 
 int	Fixed::toInt(void) const
 {
-	return (this->_raw / (std::pow(2, this->_fractBits)));
+	return (this->_raw / (1 << this->_fractBits));
 }
 
 float	Fixed::toFloat(void) const
 {
-	return (this->_raw / (std::pow(2, this->_fractBits)));
+	return ((float)this->_raw / (1 << this->_fractBits));
 }
 
 std::ostream	&operator<<(std::ostream &os, const Fixed &src)
 {
+	os << src.toFloat();
 	return (os);
 }
