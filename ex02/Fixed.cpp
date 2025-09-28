@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:45 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/26 16:43:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/28 16:24:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,97 @@ Fixed	&Fixed::operator=(const Fixed &src)
 	return (*this);
 }
 
-bool	&Fixed::operator<(const Fixed &other)
+bool	Fixed::operator<(const Fixed &other) const
 {
 	if (this->_raw < other._raw)
-		std::cout << "true" << std::endl;
-	std::cout << "false" << std::endl;
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator>(const Fixed &other) const
+{
+	if (this->_raw > other._raw)
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator<=(const Fixed &other) const
+{
+	if (this->_raw <= other._raw)
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator>=(const Fixed &other) const
+{
+	if (this->_raw >= other._raw)
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator==(const Fixed &other) const
+{
+	if (this->_raw == other._raw)
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator!=(const Fixed &other) const
+{
+	if (this->_raw == other._raw)
+		return (true);
+	return (false);
+}
+
+Fixed	Fixed::operator+(const Fixed &other)
+{
+	this->_raw += other._raw;
+	return (*this);
+}
+
+Fixed	Fixed::operator-(const Fixed &other)
+{
+	this->_raw -= other._raw;
+	return (*this);
+}
+
+Fixed	Fixed::operator*(const Fixed &other) // right ??
+{
+
+	this->_raw *= (other.toInt());
+	return (*this);
+}
+
+Fixed	Fixed::operator/(const Fixed &other) //right ??
+{
+	this->_raw /= other.toInt();
+	return (*this);
+}
+
+Fixed	&Fixed::operator++()
+{
+	this->_raw++;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed old = *this;
+	++*this;
+	return (old);
+}
+
+Fixed	&Fixed::operator--()
+{
+	this->_raw--;
+	return(*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed old = *this;
+	--*this;
+	return (old);
 }
 
 Fixed::Fixed(const int nb) : _raw(nb * (1 << this->_fractBits))
@@ -80,6 +166,34 @@ int	Fixed::toInt(void) const
 float	Fixed::toFloat(void) const
 {
 	return ((float)this->_raw / (1 << this->_fractBits));
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a._raw < b._raw)
+		return (a);
+	return (b);
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a._raw < b._raw)
+		return (a);
+	return (b);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a._raw > b._raw)
+		return (a);
+	return (b);
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a._raw > b._raw)
+		return (a);
+	return (b);
 }
 
 std::ostream	&operator<<(std::ostream &os, const Fixed &src)
