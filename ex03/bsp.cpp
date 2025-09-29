@@ -6,20 +6,20 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 18:05:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 17:33:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:22:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-static float	area_calculation(const Point &a, const Point &b, const Point &c);
+static Fixed	area_calculation(const Point &a, const Point &b, const Point &c);
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	float	area;
-	float	area1;
-	float	area2;
-	float	area3;
+	Fixed	area;
+	Fixed	area1;
+	Fixed	area2;
+	Fixed	area3;
 
 	area = area_calculation(a, b, c);
 	area1 = area_calculation(point, b, c);
@@ -27,19 +27,23 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	area3 = area_calculation(a, b, point);
 	if (area1 == 0 || area2 == 0 || area3 == 0)
 		return (false);
-	if (area == area1 + area2 +area3)
+	if (area == area1 + area2 + area3)
 		return (true);
 	return (false);
 }
 
-static float	area_calculation(const Point &a, const Point &b, const Point &c)
+static Fixed	area_calculation(const Point &a, const Point &b, const Point &c)
 {
-	float	term1;
-	float	term2;
-	float	term3;
+	Fixed	term1;
+	Fixed	term2;
+	Fixed	term3;
+	Fixed	area;
 
-	term1 = (a.getValueX() *(b.getValueY() - c.getValueY()));
-	term2 = (b.getValueX() * (c.getValueY() - a.getValueY()));
-	term3 = (c.getValueX() * (a.getValueY() - b.getValueY()));
-	return (std::fabs(term1 + term2 + term3));
+	term1 = (a.getX() * (b.getY() - c.getY()));
+	term2 = (b.getX() * (c.getY() - a.getY()));
+	term3 = (c.getX() * (a.getY() - b.getY()));
+	area = (term1 + term2 + term3);
+	if (area < Fixed(0))
+		return (area * Fixed(-1));
+	return (area);
 }

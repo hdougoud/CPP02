@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:45 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 17:41:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:41:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ Fixed	Fixed::operator*(const Fixed &other) const
 Fixed	Fixed::operator/(const Fixed &other) const
 {
 	Fixed	result;
-	result._raw = (this->_raw / other._raw) / (1 << this->_fractBits);
+	result._raw = (this->_raw * (1 << this->_fractBits));
+	result._raw /= other._raw;
 	return (result);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:36:50 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 17:28:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:05:27 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Point
 		Point &operator=(const Point &src);
 		~Point();
 		bool	operator==(const Point &other) const;
-		float	getValueX(void) const;
-		float	getValueY(void) const;
+		Fixed	getX(void) const;
+		Fixed	getY(void) const;
 	private:
 		Fixed	_x;
 		Fixed	_y;

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 17:55:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:09:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int main(void)
 void	is_inside(Point const a, Point const b, Point const c, Point const point)
 {
 	if (point == a || point == b || point == c)
-		std::cout << "on vertex" << std::endl;
+		std::cout << "\033[34m" << "on vertex" << "\033[0m" << std::endl;
 	else if (bsp(a, b, c, point))
-		std::cout << "is inside" << std::endl;
+		std::cout << "\033[32m" << "is inside" << "\033[0m" << std::endl;
 	else
-		std::cout << "is outside" << std::endl;
+		std::cout << "\033[31m" << "is outside" << "\033[0m" << std::endl;
 }

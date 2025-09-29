@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:36:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 17:28:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:04:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ bool	Point::operator==(const Point &other) const
 	return (false);
 }
 
-float	Point::getValueX(void) const
+Fixed	Point::getX(void) const
 {
-	return (this->_x.toFloat());
+	return (this->_x);
 }
 
-float	Point::getValueY(void) const
+Fixed	Point::getY(void) const
 {
-	return (this->_y.toFloat());
+	return (this->_y);
 }
