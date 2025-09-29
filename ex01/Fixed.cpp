@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:45 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/26 11:51:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/28 19:02:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	Fixed::getRawBits(void) const
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->_raw = _raw;
+	this->_raw = raw;
 }
 
 int	Fixed::toInt(void) const

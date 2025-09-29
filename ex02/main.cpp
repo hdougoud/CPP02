@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/28 16:20:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/28 18:26:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,20 @@ int main(void)
 	{
 		std::cout << std::endl;
 		Fixed a;
-		
-		Fixed b(Fixed(5.05f) * Fixed(2));
+		Fixed b(5.05f);
+		Fixed c(2);
+
+		std::cout << "b is " << b << std::endl;
+		Fixed d(b * c);
+		std::cout << "b is " << b << std::endl;
+		std::cout << "d is " << d << std::endl;
 		std::cout << a << std::endl;
 		std::cout << ++a << std::endl;
 		std::cout << a << std::endl;
 		std::cout << a++ << std::endl;
 		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-		std::cout << Fixed::max(a, b) << std::endl;
+		std::cout << d << std::endl;
+		std::cout << Fixed::max(a, d) << std::endl;
 	}
 	std::cout << std::endl;
 	return (0);

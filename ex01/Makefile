@@ -1,6 +1,6 @@
 NAME	= Fixed
 CXX		= g++
-CFLAGS	= -std=c++98 -pedantic
+CFLAGS	= -Wall -Werror -Wextra -std=c++98
 
 SRCS	= main.cpp Fixed.cpp
 OBJECT	= $(SRCS:.cpp=.o)
