@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:36:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 19:04:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/30 15:28:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,9 @@ Fixed	Point::getX(void) const
 Fixed	Point::getY(void) const
 {
 	return (this->_y);
+}
+
+Fixed	Point::get_addtition(Point &a, Point &b)
+{
+	return (a._x * a._y);
 }

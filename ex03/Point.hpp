@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:36:50 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 19:05:27 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/30 15:28:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Point
 		bool	operator==(const Point &other) const;
 		Fixed	getX(void) const;
 		Fixed	getY(void) const;
+		static	Fixed get_addtition(Point &a, Point &b);
 	private:
 		Fixed	_x;
 		Fixed	_y;

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 18:06:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/29 18:09:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/09/30 15:25:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int main(void)
 	is_inside(a, b, c, Point(10, 5));
 	is_inside(a, b, c, Point(5, 5.1f));
 	is_inside(a, b, c, Point(5, 10.1f));
+	Fixed test = Point::get_addtition(a, b);
 	return (0);
 }
 
